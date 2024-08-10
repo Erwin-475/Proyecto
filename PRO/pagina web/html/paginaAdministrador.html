@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administradores</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js1/validacion.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/2.1.3/css/dataTables.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/2.1.3/js/dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+</head>
+</head>
+<body>
+    <nav class="navbar bg-body-tertiary">
+        <div class="row">
+            <div class="col-4 p-3">
+                <img src="../img/IUB logo.png" class="img-fluid" alt="logo" width="250" height="100"> 
+            </div>
+            <div class="col-8 text-center fw-bold fs-6">
+                <p class="mt-4">PROTOTIPO WEB PARA LA ELECCION, REALIZACION, RETROALIMENTACION Y CALIFICACION DE PROYECTOS DE INVESTIGACION</p>
+            </div>
+        </div>
+    </nav>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+            <div class="container-fluid d-flex align-items-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#" onclick="mostrarReportes()">Reportes</a></li>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav ms-auto d-flex align-items-center">
+                    <li class="nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-door-open text-white" viewBox="0 0 16 16" onclick="cerrarSesion()">
+                            <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1"/>
+                            <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117M11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5M4 1.934V15h6V1.077z"/>
+                        </svg>
+                    </li>
+                </ul>     
+            </div>                       
+        </nav>
+    </header>
+    <body>
+        <div class="container mt-4" id="main-content">
+            <div class="alert alert-primary" role="alert">
+                ¡Bienvenido, Admin!
+            </div>
+            <div class="row row-cols-3 row-cols-md-6 g-4">
+                <div class="col">
+                    <div class="card h-100 text-center bg-light card-hover border border-dark rounded" onclick="mostrarD()">
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+                            </svg>
+                            <p class="card-title">Docentes</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 text-center bg-light card-hover border border-dark rounded" onclick="mostrarE()">
+                        <div class="card-body">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+                            </svg>
+                            <p class="card-title">Estudiantes</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 text-center bg-light card-hover border border-dark rounded" onclick="mostrarP()">
+                        <div class="card-body">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-journal-bookmark" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M6 8V1h1v6.117L8.743 6.07a.5.5 0 0 1 .514 0L11 7.117V1h1v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8"/>
+                                <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
+                                <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
+                            </svg>
+                            <p class="card-title">Proyectos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 text-center bg-light card-hover border border-dark rounded" onclick="mostrarEstadisticas()">
+                        <div class="card-body">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-graph-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M0 0h1v15h15v1H0zm14.817 11.887a.5.5 0 0 0 .07-.704l-4.5-5.5a.5.5 0 0 0-.74-.037L7.06 8.233 3.404 3.206a.5.5 0 0 0-.808.588l4 5.5a.5.5 0 0 0 .758.06l2.609-2.61 4.15 5.073a.5.5 0 0 0 .704.07"/>
+                            </svg>
+                            <p class="card-title">Estadisticas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 text-center bg-light card-hover border border-dark rounded" onclick="registrarD()">
+                        <div class="card-body">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
+                                <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+                                <path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
+                            </svg>
+                            <p class="card-title">Registrar Docente</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 text-center bg-light card-hover border border-dark rounded" onclick="registrarE()">
+                        <div class="card-body">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
+                                <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+                                <path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
+                            </svg>
+                            <p class="card-title">Registrar Estudia...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>    
+            <div id="lista-docentes" style="display: none;">
+                <table id="myTableDocente">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Tipo identificación</th>
+                            <th scope="col">Nombre completo</th>
+                            <th scope="col">Numero identificación</th>
+                            <th scope="col">Correo institucional</th>
+                            <th scope="col">Contraseña</th>
+                            <th scope="col">Carrera</th>
+                            <th scope="col">Cargo</th>
+                            <th scope="col">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>    
+            </div> 
+
+            <div id="lista-estudiantes" style="display: none;">
+                <table id="myTableEstudiante">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Tipo identificación</th>
+                            <th scope="col">Numero identificación</th>
+                            <th scope="col">Nombre completo</th>
+                            <th scope="col">Correo institucional</th>
+                            <th scope="col">Contraseña</th>
+                            <th scope="col">Carrera</th>
+                            <th scope="col">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>  
+            </div>
+
+            <div id="lista-proyectos" style="display: none;">
+                <table class="table table-striped" id="myTableProyecto">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Archivo</th>
+                            <th scope="col">Fecha de subida</th>
+                            <th scope="col">Nota</th>
+                            <th scope="col">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>   
+
+            <div id="inicioAdmin" style="display: none;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="p-3">
+                            <div class="row mb-4">
+                                <div class="col-md-4">
+                                    <div class="card text-white bg-dark mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Proyectos Totales</h5>
+                                            <p class="card-text" id="totalProyectos"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card text-white bg-dark mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">En Progreso</h5>
+                                            <p class="card-text" id="EnProgreso"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card text-white bg-dark mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Terminados</h5>
+                                            <p class="card-text" id="ProyectoTerminado"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="p-3">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div>
+                                        <h1>Selecciona una Gráfica para Descargar</h1>
+                                        <label for="chartSelect">Elige una gráfica:</label>
+                                        <select id="chartSelect">
+                                            <option value="myChart1">Proyectos en Web</option>
+                                            <option value="myChart2">Carreras Cursadas por Estudiante</option>
+                                            <option value="myChart3">Programas Docente</option>
+                                            <option value="myChart4">Estudiantes con Retroalimentación</option>
+                                            <option value="myChart5">Estado de los Proyectos</option>
+                                            <option value="myChart6">Docente con más Retroalimentación</option>
+                                        </select>
+                                        <div class="chart-container" style="width: 100%; height: 80vh;">
+                                            <canvas id="myChart1"></canvas>
+                                            <canvas id="myChart2"></canvas>
+                                            <canvas id="myChart3"></canvas>
+                                            <canvas id="myChart4"></canvas>
+                                            <canvas id="myChart5"></canvas>
+                                            <canvas id="myChart6"></canvas>
+                                        </div>
+                                        <button id="downloadPDF" class="btn btn-dark">Descargar PDF (Tabla)</button>
+                                        <button id="downloadExcel" class="btn btn-dark">Descargar Excel</button>
+                                    </div>             
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div id="registrar-Docente" style="display: none;">
+                <h2>Registro de Docentes</h2>
+                <form>
+                    <div class="mb-3">    
+                        <label for="cc_tipo" class="col-sm-2 col-form-label">Tipo de Identificacion:</label>
+                            <select class="rounded border border-dark" name="tipo_identificacion" id="tipo_identificacion">
+                                <option selected="">...</option>
+                                <option value="CC">Cedula</option>
+                                <option value="CE">Cedula extranjera</option>
+                                <option value="TP">Pasaporte</option>
+                            </select>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="cc_num" class="col-sm-2 col-form-label">Identificacion:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control border border-dark" id="identificacion" name="identificacion" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="nombre" class="col-sm-2 col-form-label">Nombre completo:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control border border-dark" id="nombre" name="nombre" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="correo" class="col-sm-2 col-form-label">Correo Institucional:</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control border border-dark" id="correo" name="correo" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="edad" class="col-sm-2 col-form-label">Contraseña:</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control border border-dark" id="contraseña" name="contraseña" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="programa" class="col-sm-2 col-form-label">Carrera:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control border border-dark" id="carrera" name="carrera" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">    
+                        <label for="cc_tipo" class="col-sm-2 col-form-label">Cargo del docente:</label>
+                            <select class="rounded border border-dark" name="Cargo" id="cargo">
+                                <option selected="">...</option>
+                                <option value="1">Asesor</option>
+                                <option value="2">Evaluador</option>
+                            </select>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-dark" onclick="registrar()">Guardar</button>
+                        <button type="reset" class="btn btn-dark">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="registrar-Estudiante" style="display: none;">
+                <h2>Registro de Estudiantes</h2>
+                <form>
+                    <div class="mb-3">    
+                        <label for="cc_tipo" class="col-sm-2 col-form-label">Tipo de Identificacion:</label>
+                            <select class="rounded border border-dark" name="tipo_identificacion" id="tipo_identificacionE">
+                                <option selected="">...</option>
+                                <option value="TI">Tarjeta de identidad</option>
+                                <option value="CC">Cedula</option>
+                                <option value="CE">Cedula extranjera</option>
+                                <option value="TP">Pasaporte</option>
+                            </select>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="cc_num" class="col-sm-2 col-form-label">Identificacion:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control border border-dark" id="identificacionE" name="identificacion" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="nombre" class="col-sm-2 col-form-label">Nombre completo:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control border border-dark" id="nombreE" name="nombre" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="correo" class="col-sm-2 col-form-label">Correo Institucional:</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control border border-dark" id="correoE" name="correo" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="edad" class="col-sm-2 col-form-label">Contraseña:</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control border border-dark" id="contraseñaE" name="contraseña" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="programa" class="col-sm-2 col-form-label">Carrera:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control border border-dark" id="carreraE" name="carrera" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-dark" onclick="registrarEs()">Guardar</button>
+                        <button type="reset" class="btn btn-dark">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal fade" id="modalEditarEstudiante" tabindex="-1" aria-labelledby="modalEditarEstudianteLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalEditarEstudianteLabel">Editar Estudiante</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="idEstudiante">
+                            <div class="row mb-3">
+                                <div class="col-sm-6">
+                                    <label class="col-form-label">Tipo de Identificación:</label>
+                                    <input type="text" id="edit_tipo_identificación" class="form-control border border-dark">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="col-form-label">Número de Identificación:</label>
+                                    <input type="text" id="edit_numero_identificación" class="form-control border border-dark">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-6">
+                                    <label class="col-form-label">Nombre Completo:</label>
+                                    <input type="text" id="edit_nombre_completo" class="form-control border border-dark">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="col-form-label">Correo Institucional:</label>
+                                    <input type="email" id="edit_correo_institucional" class="form-control border border-dark">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-6">
+                                    <label for="edit_password" class="col-form-label">Contraseña:</label>
+                                    <input type="password" id="edit_password" class="form-control border border-dark">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="edit_carrera" class="col-form-label">Carrera:</label>
+                                    <input type="text" id="edit_carrera" class="form-control border border-dark">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-dark" onclick="actualizarEstudiante()">Actualizar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modalEditarDocente" tabindex="-1" aria-labelledby="modalEditarDocenteLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalEditarDocenteLabel">Editar Docente</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="idDocente">
+                            <div class="row mb-3">
+                                <div class="col-sm-6">
+                                    <label class="col-form-label">Nombre Completo:</label>
+                                    <input type="text" id="edit_nombre_completo_docente" class="form-control border border-dark">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="col-form-label">Número de Identificación:</label>
+                                    <input type="text" id="edit_numero_identificación_docente" class="form-control border border-dark">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-6">
+                                    <label class="col-form-label">Tipo de Identificación:</label>
+                                    <input type="text" id="edit_tipo_identificación_docente" class="form-control border border-dark">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="col-form-label">Correo Institucional:</label>
+                                    <input type="email" id="edit_correo_institucional_docente" class="form-control border border-dark">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-6">
+                                    <label for="edit_password" class="col-form-label">Contraseña:</label>
+                                    <input type="password" id="edit_password_docente" class="form-control border border-dark">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="edit_carrera" class="col-form-label">Carrera:</label>
+                                    <input type="text" id="edit_carrera_docente" class="form-control border border-dark">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cargo" class="col-sm-2 col-form-label">Cargo Docente</label>
+                                    <select class="rounded border border-dark" name="cargo" id="idCargo">
+                                        <option value="1">Asesor</option>
+                                        <option value="2">Evaluador</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-dark" onclick="actualizarDocente()">Actualizar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modalEditarProyecto" tabindex="-1" aria-labelledby="modalEditarProyectoLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalEditarProyectoLabel">Editar Proyecto</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="idProyecto">
+                            <div class="row mb-3">
+                                <div class="col-sm-6">
+                                    <label class="col-form-label">Titulo:</label>
+                                    <input type="text" id="edit_titulo" class="form-control border border-dark">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="col-form-label">Descripción:</label>
+                                    <textarea id="edit_descripción" class="form-control border border-dark"></textarea>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-6">
+                                    <label class="col-form-label">Archivo:</label>
+                                    <input type="text" id="edit_archivo" class="form-control border border-dark">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-6">
+                                    <label class="col-form-label">Nota:</label>
+                                    <input type="text" id="edit_nota" class="form-control border border-dark">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="col-sm-2 col-form-label">Estado:</label>
+                                <select class="rounded border border-dark" id="idEstado">
+                                    <option value="1">En desarrollo</option>
+                                    <option value="2">Terminado</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-dark" onclick="actualizarProyecto()">Actualizar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <br>
+    <footer class="bg-dark text-white py-2">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col">
+                    <p>© 2024 Tu Compañía. Todos los derechos reservados</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../js1/mostrarA.js"></script>
+    <script src="../js1/mostrarTablaA.js"></script>
+    <script src="../js1/registroDocente.js"></script>
+    <script src="../js1/registrarEstudiante.js"></script>
+    <!-- <script src="../js1/base3.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <script src="../js1/estadisticaAdmin.js"></script>
+    <script src="../js1/descargarGraficas.js"></script>
+</body>
+</html>

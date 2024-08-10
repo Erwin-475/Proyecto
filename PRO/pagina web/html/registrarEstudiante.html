@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Estudiantes</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js1/registro.js"></script>
+</head>
+<body class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
+    <div class="card border-dark" style="max-width: 40rem;">
+        <div class="card-header bg-dark text-white">
+            <center><h4>REGISTRO</h4></center>
+        </div>
+        <div class="card-body text-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 align-self-center">
+                        <img src="../img/images.png" class="img-fluid" alt="Imagen de registro">
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                        <input type="text" placeholder="Nombre Completo" class="form-control" id="nombre"><br>
+                        <input type="text" placeholder="Carrera" class="form-control mb-4" id="carrera">
+                        <select id="tipo_identificacion" class="form-control">
+                            <option selected="">...</option>
+                            <option value="CC">Cédula</option>
+                            <option value="TI">Tarjeta de Identidad</option>
+                            <option value="CE">Cédula Extranjera</option>
+                            <option value="TP">Tarjeta de Pasaporte</option>
+                        </select>
+                        <div class="form-text text-muted">
+                            <p>Tipo de Identificación</p>
+                        </div>
+                        <input type="text" placeholder="Identificación" class="form-control" id="identificacion"><br>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                        <input type="text" placeholder="Correo Institucional" class="form-control" id="correo"><br>
+                        <input type="password" placeholder="Contraseña" class="form-control" id="contraseña"><br>
+                        <input type="submit" value="Registrar" class="btn btn-dark" onclick="registrar()">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
